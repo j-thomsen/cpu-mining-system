@@ -1,0 +1,16 @@
+---
+- name: Build Docker images from Dockerfiles.
+  docker_image:
+    name: miner
+    tag: miner
+    path: "/vagrant"
+    state: build
+
+- name: Run a ubuntu container.
+  docker_container:
+    image: miner:miner
+    name: miner
+    state: started
+
+
+
