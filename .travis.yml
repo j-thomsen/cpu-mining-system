@@ -9,3 +9,7 @@ install:
 
 script:
   - ansible-playbook main.yml
+
+branches:
+  only:
+  - develop
