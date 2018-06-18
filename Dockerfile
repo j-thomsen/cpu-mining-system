@@ -32,6 +32,5 @@ RUN \
 
 # Define entrypoint.
 ENTRYPOINT \
-  cd /root/cpuminer && \
-  ./minerd -o $pooladdr:$poolprt -O $poolusr.$wrkr:$poolpwd
+  /root/cpuminer/minerd -o $pooladdr:$poolprt -O $poolusr.$wrkr:$poolpwd
   
