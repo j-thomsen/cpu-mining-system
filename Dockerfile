@@ -23,14 +23,15 @@ RUN \
   apt-get install -y yasm dnsutils && \
   apt-get install -y git && \
   apt-get install -y docker && \
-  rm -rf /var/lib/apt/lists/*
-
-# Define default command.
-CMD \
+  rm -rf /var/lib/apt/lists/* && \
+  cd /root && \
   git clone https://github.com/pooler/cpuminer.git && \
   cd cpuminer && \
   ./autogen.sh && \
   ./configure CFLAGS="-O3" && \
-  make && \
-  #./minerd -o <pooladdress>:<port> -O <user>.<worker>:<password>
+  make
+
+# Define entrypoint.
+ENTRYPOINT \
+  /root/cpuminer/minerd -o $pooladdr:$poolprt -O $poolusr.$wrkr:$poolpwd
   
