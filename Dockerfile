@@ -9,6 +9,7 @@ FROM ubuntu:14.04
 
 # Install.
 RUN \
+  echo $HOME && \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
   apt-get update && \
   apt-get -y upgrade && \
@@ -21,13 +22,8 @@ RUN \
   apt-get install -y automake && \ 
   apt-get install -y yasm dnsutils && \
   apt-get install -y git && \
+  apt-get install -y docker && \
   rm -rf /var/lib/apt/lists/*
-
-# Set environment variables.
-ENV HOME /root
-
-# Define working directory.
-WORKDIR /root
 
 # Define default command.
 CMD \
@@ -36,5 +32,5 @@ CMD \
   ./autogen.sh && \
   ./configure CFLAGS="-O3" && \
   make && \
-  ./minerd -o <pooladdress>:<port> -O <user>.<worker>:<password>
+  #./minerd -o <pooladdress>:<port> -O <user>.<worker>:<password>
   

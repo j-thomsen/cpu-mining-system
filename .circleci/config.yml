@@ -1,13 +1,49 @@
 version: 2
+
 jobs:
   build:
     docker:
-      - image: debian:stretch
+            - image: ubuntu
     steps:
       - checkout
+
+      - setup_remote_docker:
+          docker_layer_caching: true 
+
       - run:
-          name: Greeting
-          command: echo Hello, world.
+          name: install docker
+          command: |
+            set -x
+            apt-get update
+            apt-get install -y curl
+            VER="17.03.0-ce"
+            curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz
+            tar -xz -C /tmp -f /tmp/docker-$VER.tgz
+            mv /tmp/docker/* /usr/bin
+
       - run:
-          name: Print the Current Time
-          command: date
+          name: Run playbook
+          command: |
+            echo "here i am"
+            echo $HOME
+            echo pwd
+            ls /root/project
+            apt-get update
+            apt-get install -y wget gnupg
+            apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7EA0A9C3F273FCD8
+            apt-get update
+            apt-get install -y software-properties-common
+            add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) \ test"
+            apt-get install -y docker python-pip python python3 python3-venv python3-apt build-essential
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install --upgrade pip
+            pip install docker-py
+            pip install ansible
+            ansible-galaxy install angstwad.docker_ubuntu,v3.4.7
+            docker build -t miner:miner /root/project 
+            ansible-playbook -i hosts main.yml
+            docker ps -a
+            docker login -u $DHUBUSER -p $DHUBPWD
+            docker tag miner:miner $DHUBUSER/miner
+            docker push $DHUBUSER/miner

@@ -4,9 +4,9 @@
 # Ansible uses ControlPersist for SSH connections. The first time this playbook
 # runs, the docker commands would fail if run by the vagrant user, since the
 # persisted connection state isn't aware of the addition of the 'docker' group.
-- name: Add vagrant user to docker group.
+- name: Add root user to docker group.
   user:
-    name: vagrant
+    name: root
     groups: docker
     append: yes
   become: yes
