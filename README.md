@@ -8,6 +8,13 @@ This project is meant as an exercise in configuration management, containerizati
 
 This project IS NOT meant to result in a profitable mining system. CPU mining of Bitcoin is generally unprofitable, and a waste of electricity.
 
+Repo Structure
+--------------
+
+The repo structure is kept as intentionally flat on purpose.
+
+The stable branch is Master, and develop is treated as an unstable feature branch. Pull requests should be openedagainst Master. Third party contributors should open their pull requests against a branch on their own fork of the repo.
+
 How to run miner
 ----------------
 

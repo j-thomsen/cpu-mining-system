@@ -1,7 +1,0 @@
----
-- name: Run a ubuntu container.
-  docker_container:
-    image: miner:miner
-    name: miner
-    state: started
-
