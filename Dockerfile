@@ -24,6 +24,7 @@ RUN \
   apt-get install -y git && \
   apt-get install -y docker && \
   rm -rf /var/lib/apt/lists/* && \
+  cd /root && \
   git clone https://github.com/pooler/cpuminer.git && \
   cd cpuminer && \
   ./autogen.sh && \
