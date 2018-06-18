@@ -23,12 +23,12 @@ RUN \
   apt-get install -y yasm dnsutils && \
   apt-get install -y git && \
   apt-get install -y docker && \
-  rm -rf /var/lib/apt/lists/*
+  rm -rf /var/lib/apt/lists/* && \
   git clone https://github.com/pooler/cpuminer.git && \
   cd cpuminer && \
   ./autogen.sh && \
   ./configure CFLAGS="-O3" && \
-  make && \
+  make
 
 # Define entrypoint.
 ENTRYPOINT \
