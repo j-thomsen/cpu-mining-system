@@ -25,8 +25,11 @@ RUN \
   apt-get install -y docker && \
   rm -rf /var/lib/apt/lists/* && \
   cd /root && \
-  git clone https://github.com/pooler/cpuminer.git && \
+  #don't checkout head during clone, but wait till checkout of hash
+  #if this hash is changed then the checksum will need to be updated
+  git clone -n https://github.com/pooler/cpuminer.git && \
   cd cpuminer && \
+  git checkout 32464ebfc42858462418bd5df47a796917c48d82 && \
   ./autogen.sh && \
   ./configure CFLAGS="-O3" && \
   make
