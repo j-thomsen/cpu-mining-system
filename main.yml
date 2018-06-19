@@ -28,13 +28,13 @@
 
     - name: Build docker image
       docker_image:
-        name: miner
-        tag: miner
+        name: jrtktb/miner
+        tag: local
         path: /root/project
         state: present
+        push: yes
 
     - name: Run ubuntu container.
       docker_container:
-        image: miner:miner
-        name: miner
+        image: jrtktb/miner:local
         state: started
