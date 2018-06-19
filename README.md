@@ -52,4 +52,4 @@ DockerHub image home: hub.docker.com/r/jrtktb/miner/
 # Resources I found useful while working on this project
 Docker role: https://github.com/angstwad/docker.ubuntu
 Vagrant/Ansible: https://github.com/geerlingguy/ansible-vagrant-examples
-
+CPU Miner Source: https://github.com/pooler/cpuminer
