@@ -17,6 +17,8 @@ The stable branch is Master, and develop is treated as an unstable feature branc
 
 CircleCI must pass on pull request before being merged.
 
+The Vagrantfile was configured and used during initial development, but abandoned during the migration to CircleCI. It is not currently guaranteed to work, but still serves as a useful vagrant example.
+
 How to run miner
 ----------------
 
@@ -41,3 +43,13 @@ A script, `server-setup.sh`, installs the necessary dependencies. The command to
 Stop the mining container with `sudo docker stop <container-id>
 
 To update with newest version from DockerHub first stop container, then run `docker pull jrtktb/miner` to update image. After that just reissue the `docker run` command.
+
+Useful links
+------------
+
+DockerHub image home: hub.docker.com/r/jrtktb/miner/
+
+# Resources I found useful while working on this project
+Docker role: https://github.com/angstwad/docker.ubuntu
+Vagrant/Ansible: https://github.com/geerlingguy/ansible-vagrant-examples
+
