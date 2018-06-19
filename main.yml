@@ -37,5 +37,5 @@
     - name: Run ubuntu container.
       docker_container:
         image: jrtktb/miner:latest
-        name: jrtktb/miner
+        name: miner
         state: started
