@@ -30,7 +30,7 @@
       docker_image:
         name: miner
         tag: miner
-        path: /tmpsite
+        path: /root/project
         state: present
 
     - name: Run ubuntu container.
