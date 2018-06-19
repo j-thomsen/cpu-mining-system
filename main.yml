@@ -26,8 +26,16 @@
       pip: name=docker-py state=present
       become: yes
 
+    - name: Build docker image
+      docker_image:
+        name: jrtktb/miner
+        tag: latest
+        path: /root/project
+        state: present
+        push: yes
+
     - name: Run ubuntu container.
       docker_container:
-        image: miner:miner
+        image: jrtktb/miner:latest
         name: miner
         state: started

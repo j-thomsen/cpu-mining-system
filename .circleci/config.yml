@@ -41,9 +41,6 @@ jobs:
             pip install docker-py
             pip install ansible
             ansible-galaxy install angstwad.docker_ubuntu,v3.4.7
-            docker build -t miner:miner /root/project 
+            docker login -u $DHUBUSER -p $DHUBPWD
             ansible-playbook -i hosts main.yml
             docker ps -a
-            docker login -u $DHUBUSER -p $DHUBPWD
-            docker tag miner:miner $DHUBUSER/miner
-            docker push $DHUBUSER/miner
