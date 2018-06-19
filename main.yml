@@ -26,6 +26,13 @@
       pip: name=docker-py state=present
       become: yes
 
+    - name: Build docker image
+      docker_image:
+        name: miner
+        tag: miner
+        path: /tmpsite
+        state: present
+
     - name: Run ubuntu container.
       docker_container:
         image: miner:miner
